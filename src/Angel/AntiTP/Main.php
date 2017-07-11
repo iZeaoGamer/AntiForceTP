@@ -45,7 +45,7 @@ class Main extends PluginBase implements Listener{
       if(isset($this->antiTP[$command])){
         $this->tped[strtolower($ev->getPlayer()->getName())] = strtolower($ev->getPlayer()->getName());
       }
-      // checks for the blocked commands on force tp
+      // cancels event if force tped and run blocked force tp command
       if(isset($this->tped[strtolower($ev->getPlayer()->getName())])){
         if(isset($this->blocked[$command])){
           $ev->setCancelled(true);
