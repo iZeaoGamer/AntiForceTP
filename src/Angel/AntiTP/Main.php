@@ -49,7 +49,7 @@ class Main extends PluginBase implements Listener{
       if(isset($this->tped[strtolower($ev->getPlayer()->getName())])){
         if(isset($this->blocked[$command])){
           $ev->setCancelled(true);
-          $ev->getPLayer()->sendMessage("This Command is Disabled Since You Force Tped!");
+          $ev->getPlayer()->sendMessage("This Command is Disabled Since You Force Tped!");
         }
       }
       
