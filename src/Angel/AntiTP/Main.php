@@ -41,7 +41,7 @@ class Main extends PluginBase implements Listener{
   
   public function antiTP(PlayerCommandPreprocessEvent $ev){
     $command = strtolower(explode(" ", $ev->getMessage())[0]);
-    if($ev->getPlayer()->isOp() or $event->getPlayer()->hasPermission("pocketmine.command.teleport")){
+    if($ev->getPlayer()->isOp() or $ev->getPlayer()->hasPermission("pocketmine.command.teleport")){
       if(isset($this->antiTP[$command])){
         $this->tped[strtolower($ev->getPlayer()->getName())] = strtolower($ev->getPlayer()->getName());
       }
