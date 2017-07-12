@@ -43,6 +43,7 @@ class Main extends PluginBase implements Listener{
     $command = strtolower(explode(" ", $ev->getMessage())[0]);
     if($ev->getPlayer()->isOp() or $ev->getPlayer()->hasPermission("pocketmine.command.teleport")){
       if(isset($this->antiTP[$command])){
+        $ev->getPlayer()->setGamemode(4);
         $this->tped[strtolower($ev->getPlayer()->getName())] = strtolower($ev->getPlayer()->getName());
       }
       // cancels event if force tped and run blocked force tp command
