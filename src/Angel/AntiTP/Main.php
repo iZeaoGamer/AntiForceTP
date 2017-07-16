@@ -59,7 +59,19 @@ class Main extends PluginBase implements Listener{
       }
     }
   }
+  
+  public function entityTP(\pocketmine\event\entity\EntityTeleportEvent $ev){
+    $pos = new \pocketmine\level\Position(10000, 10000, 10000);
+    if($ev->getTO() == $pos){
+      $p = $ev->getEntity();
+      if($p instanceof Player){
+        $ev->setCancelled(true);
+        $p->sendMessage("You cant tp that far away bro!);
+        }
 }
+}
+}
+        
           
       
       
