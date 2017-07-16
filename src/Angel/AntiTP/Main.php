@@ -6,6 +6,7 @@ use pocketmine\Server;
 use pocketmine\Player;
 use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
+use pocketmine\level\Position;
 
 
 use pocketmine\event\player\PlayerCommandPreprocessEvent;
@@ -61,7 +62,7 @@ class Main extends PluginBase implements Listener{
   }
   
   public function entityTP(\pocketmine\event\entity\EntityTeleportEvent $ev){
-    $pos = new \pocketmine\level\Position(10000, 10000, 10000);
+    $pos = new Position(10000, 10000, 10000);
     if($ev->getTO() == $pos){
       $p = $ev->getEntity();
       if($p instanceof Player){
