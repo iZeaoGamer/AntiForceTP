@@ -1,2 +1,2 @@
 # AntiForceTP
-stops force tpers from settinh homes etc
+stops force tp-ers from setting homes etc
