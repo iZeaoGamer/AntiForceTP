@@ -13,64 +13,34 @@ use pocketmine\event\player\PlayerCommandPreprocessEvent;
 
 class Main extends PluginBase implements Listener{
   
-  public $tped = [];
-  
-  public $antiTP = [];
-  public $blocked = [];
+  public $tper = [];
   
   public function onEnable(){
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
-    
-    $cmds = [
-      "/tp",
-      "./tp",
-      "/god",
-      "./god",
-        ];
-        foreach($cmds as $cmd){
-            $this->antiTP[$cmd]=1;
-        }
-    
-        $cmds = [
-      "/sethome",
-      "./sethome",
-        ];
-        foreach($cmds as $cmd){
-            $this->blocked[$cmd]=1;
-        }
   }
   
   public function antiTP(PlayerCommandPreprocessEvent $ev){
     $command = strtolower(explode(" ", $ev->getMessage())[0]);
     if($ev->getPlayer()->isOp() or $ev->getPlayer()->hasPermission("pocketmine.command.teleport")){
-      if(isset($this->antiTP[$command])){
+      if($command == "./tp" || $command == "/tp"){
         $ev->getPlayer()->setGamemode(4);
-        $this->tped[strtolower($ev->getPlayer()->getName())] = strtolower($ev->getPlayer()->getName());
+        $this->tper[strtolower($ev->getPlayer()->getName())] = strtolower($ev->getPlayer()->getName());
       }
       // cancels event if force tped and run blocked force tp command
-      if(isset($this->tped[strtolower($ev->getPlayer()->getName())])){
-        if(isset($this->blocked[$command])){
+      if(isset($this->tper[strtolower($ev->getPlayer()->getName())])){
+        if($command == "./sethome" || $command == "./sethome"){
           $ev->setCancelled(true);
-          $ev->getPlayer()->sendMessage("This Command is Disabled Since You Force Tped!");
+          $ev->getPlayer()->sendMessage("This Command is Disabled Since You Force Tped! , Remove this by tping to spawn!");
         }
       }
       
       if($command == "/spawn" || $command == "./spawn"){
-        unset($this->tped[strtolower($ev->getPlayer()->getName())]);
+        unset($this->tper[strtolower($ev->getPlayer()->getName())]);
+        $ev->getPlayer()->sendMessage("Forced TPed removed!");
+        $ev->getPlayer()->setGamemode(0);
       }
     }
   }
-  
-  public function entityTP(\pocketmine\event\entity\EntityTeleportEvent $ev){
-    $pos = new Position(10000, 10000, 10000);
-    if($ev->getTO() == $pos){
-      $p = $ev->getEntity();
-      if($p instanceof Player){
-        $ev->setCancelled(true);
-        $p->sendMessage("You cant tp that far away bro!);
-        }
-}
-}
 }
         
           
