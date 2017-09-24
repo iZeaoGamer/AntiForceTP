@@ -28,7 +28,7 @@ class Main extends PluginBase implements Listener{
       }
       // cancels event if force tped and run blocked force tp command
       if(isset($this->tper[strtolower($ev->getPlayer()->getName())])){
-        if($command == "./sethome" || $command == "./sethome"){
+        if($command == "/sethome" || $command == "./sethome"){
           $ev->setCancelled(true);
           $ev->getPlayer()->sendMessage("This Command is Disabled Since You Force Tped! , Remove this by tping to spawn!");
         }
