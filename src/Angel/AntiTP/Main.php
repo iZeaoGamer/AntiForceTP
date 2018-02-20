@@ -8,15 +8,9 @@ use pocketmine\event\player\PlayerCommandPreprocessEvent;
 class Main extends PluginBase implements Listener{
   
   public $tper = [];
-  public $essentialspe;
-  public $plugin;
   
   public function onEnable(){
       $this->getServer()->getPluginManager()->registerEvents($this, $this);
-      $this->essentialspe = $this->getServer()->getPluginManager()->getPlugin("EssentialsPE");
-        if (!$this->essentialspe) {
-            $this->getLogger()->info("Add EssentialsPE to disable the /god feature upon teleport.");
-        }
   }
   public function antiTP(PlayerCommandPreprocessEvent $ev){
     $p = $ev->getPlayer();
@@ -26,8 +20,6 @@ class Main extends PluginBase implements Listener{
         $p->setGamemode(3);
         $this->tper[strtolower($p->getName())] = strtolower($p->getName());
       }
-      if($this->plugin->essentialsPE->isGod($ev->getPlayer())){
-        $ev->setCancelled(true);
       // cancels event if force tped and run blocked force tp command
       if(isset($this->tper[strtolower($p->getName())])){
         if($command == "/sethome" || $command == "./sethome" || $command == "/god" || $command == "./god" || $command == "/gamemode" || $command == "./gamemode" || $command == "/gm" || $command == "./gm" || $command == "/creative" || $command == "./creative" || $command == "/survival" || $command == "./survival" || $command == "/adventure" || $command == "./adventure"){
