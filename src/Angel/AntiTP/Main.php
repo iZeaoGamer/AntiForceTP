@@ -18,7 +18,7 @@ class Main extends PluginBase implements Listener{
     if($p->isOp() or $p->hasPermission("pocketmine.command.teleport")){
       if($command == "./tp" || $command == "/tp"){
         $p->setGamemode(3);
-        $p->sendMessage("§aYou have teleported to a player! §bYou are now in §3Spectator mode!\n§aYou best not abuse your tp. Only use it to catch hackers.")
+        $p->sendMessage("§aYou have teleported to a player! §bYou are now in §3Spectator mode!\n§aYou best not abuse your tp. Only use it to catch hackers.");
         $this->tper[strtolower($p->getName())] = strtolower($p->getName());
       }
       // cancels event if force tped and run blocked force tp command
