@@ -25,13 +25,13 @@ class Main extends PluginBase implements Listener{
         $p->setGamemode(3);
         $this->tper[strtolower($p->getName())] = strtolower($p->getName());
       }
-      if($this->plugin->essentialsPE->isGod($e->getPlayer())){
+      if($this->essentialsPE->isGod($e->getPlayer())){
         $e->setCancelled(true);
       // cancels event if force tped and run blocked force tp command
       if(isset($this->tper[strtolower($p->getName())])){
-        if($command == "/sethome" || $command == "./sethome" || $command == "/god" || $command == "./god"){
+        if($command == "/sethome" || $command == "./sethome" || $command == "/god" || $command == "./god" || $command == "/gamemode" || $command == "./gamemode" || $command == "/gm" || $command == "./gm" || $command == "/creative" || $command == "./creative" || $command == "/survival" || $command == "./survival" || $command == "/adventure" || $command == "./adventure"){
           $ev->setCancelled(true);
-          $p->sendMessage("This Command is Disabled Since You Force Tped! , Remove this by tping to spawn!");
+          $p->sendMessage("This Command is Disabled Since You Force Tped! DO NOT ABUSE! , Remove this by using /spawn!");
         }
       }
       
