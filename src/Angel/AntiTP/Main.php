@@ -26,7 +26,7 @@ class Main extends PluginBase implements Listener{
         $p->setGamemode(3);
         $this->tper[strtolower($p->getName())] = strtolower($p->getName());
       }
-      if($this->plugin->EssentialsPE->isGod($ev->getPlayer())){
+      if($this->plugin->essentialsPE->isGod($ev->getPlayer())){
         $ev->setCancelled(true);
       // cancels event if force tped and run blocked force tp command
       if(isset($this->tper[strtolower($p->getName())])){
