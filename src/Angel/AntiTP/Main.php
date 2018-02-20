@@ -18,19 +18,20 @@ class Main extends PluginBase implements Listener{
     if($p->isOp() or $p->hasPermission("pocketmine.command.teleport")){
       if($command == "./tp" || $command == "/tp"){
         $p->setGamemode(3);
+        $p->sendMessage("§aYou have teleported to a player! §bYou are now in §3Spectator mode!\n§aYou best not abuse your tp. Only use it to catch hackers.")
         $this->tper[strtolower($p->getName())] = strtolower($p->getName());
       }
       // cancels event if force tped and run blocked force tp command
       if(isset($this->tper[strtolower($p->getName())])){
-        if($command == "/sethome" || $command == "./sethome" || $command == "/god" || $command == "./god" || $command == "/gamemode" || $command == "./gamemode" || $command == "/gm" || $command == "./gm" || $command == "/creative" || $command == "./creative" || $command == "/survival" || $command == "./survival" || $command == "/adventure" || $command == "./adventure"){
+        if($command == "/sethome" || $command == "./sethome" || $command == "/god" || $command == "./god" || $command == "/gamemode" || $command == "./gamemode" || $command == "/gma" || $command == "./gma" || $command == "/creative" || $command == "./creative" || $command == "/survival" || $command == "./survival" || $command == "/adventure" || $command == "./adventure" || $command == "./gmc" || $command == "./gms" || $command == "./gms"){
           $ev->setCancelled(true);
-          $p->sendMessage("This Command is Disabled Since You Force Tped! DO NOT ABUSE! , Remove this by using /spawn!");
+          $p->sendMessage("§cThis command is blocked by the server because you force tped. We do not want abusers. To fix this, use /spawn. Please do not use this command again.\n§cYou could potentially get demoted. Who knows!\n§cIt's called tp raiding / tp abuse.");
         }
       }
       
-      if($command == "/spawn" || $command == "./spawn"){
+      if($command == "/spawn" || $command == "./spawn" || $command == "/hub" || $command == "./hub"){
         unset($this->tper[strtolower($p->getName())]);
-        $p->sendMessage("Forced TPed removed!");
+        $p->sendMessage("§aYou have finally went to spawn! §bYour force TP was removed. Thank you for doing as you're told, xD.");
         $p->setGamemode(0);
       }
     }
