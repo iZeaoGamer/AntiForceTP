@@ -23,13 +23,13 @@ class Main extends PluginBase implements Listener{
       }
       // cancels event if force tped and run blocked force tp command
       if(isset($this->tper[strtolower($p->getName())])){
-        if($command == "/sethome" || $command == "./sethome" || $command == "/createhome" || $command == "./createhome" || $command == "/god" || $command == "./god" || $command == "/gamemode" || $command == "./gamemode" || $command == "/gma" || $command == "./gma" || $command == "/creative" || $command == "./creative" || $command == "/survival" || $command == "./survival" || $command == "/adventure" || $command == "./adventure" || $command == "./gmc" || $command == "/gmc" || $command == "./gms" || $command == "./gms" || $command == "/tpyes" || $command == "./tpyes" || $command == "/tpa" || $command == "./tpa" || $command == "/tpno" || $command == "./tpno" || $command == "/spectator" || $command == "./spectator" || $command == "/svon" || $command == "./svon" || $command == "./svoff" || $command == "/sv" || $command == "./sv"){
+        if($command == "/home" || $command == "./home"){
           $ev->setCancelled(true);
           $p->sendMessage("§cThis command is blocked by the server because you force tped. We do not want abusers. To fix this, use /spawn. Please do not use this command again.\n§cYou could potentially get demoted. Who knows!\n§cIt's called tp raiding / tp abuse.");
         }
       }
       
-      if($command == "/spawn" || $command == "./spawn" || $command == "/hub" || $command == "./hub"){
+      if($command == "/spawn" || $command == "./spawn"){
         unset($this->tper[strtolower($p->getName())]);
         $p->setGamemode(0);
       }
